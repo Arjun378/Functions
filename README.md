@@ -1,46 +1,121 @@
-# Functions in C++
+# C++ Recursive Functions
 
-This repository provides a comprehensive guide and examples for working with functions in C++. Functions are an essential part of C++ programming, enabling you to create modular and reusable code.
+This repository contains examples and explanations of recursive functions in C++. Recursive functions are functions that call themselves to solve a problem by breaking it down into smaller, similar subproblems. This README provides an overview of how to work with recursive functions in C++.
 
 ## Table of Contents
-- [Introduction to Functions](#introduction-to-functions)
-- [Function Basics](#function-basics)
-- [Function Parameters](#function-parameters)
-- [Function Overloading](#function-overloading)
 - [Recursive Functions](#recursive-functions)
-- [Lambda Functions](#lambda-functions)
-- [Examples](#examples)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Introduction to Functions
-
-In C++, a function is a self-contained block of code that performs a specific task. Functions are used for code organization, modularity, and reusability. This repository covers the fundamentals of functions in C++.
-
-## Function Basics
-
-Learn the basics of defining, declaring, and calling functions in C++. Understand the function signature, return type, and how to pass data in and out of functions.
-
-## Function Parameters
-
-Explore the use of parameters in functions. Learn about pass-by-value, pass-by-reference, and default arguments. Discover how to work with variable-length argument lists using the `...` notation.
-
-## Function Overloading
-
-Understand function overloading, which allows you to define multiple functions with the same name but different parameters. Learn the rules and best practices for overloading functions.
+  - [Definition](#definition)
+  - [Base Case](#base-case)
+  - [Example: Calculating Factorial](#example-calculating-factorial)
+- [Algorithm](#algorithm)
+- [Output](#output)
 
 ## Recursive Functions
 
-Dive into recursive functions, which call themselves to solve problems. Explore recursion examples and when it's appropriate to use this technique.
+### Definition
 
-## Lambda Functions
+A recursive function is a function that calls itself to solve a problem. It breaks down a complex problem into simpler, similar subproblems and solves each subproblem individually. Recursive functions are defined in terms of their base case(s) and recursive case(s).
 
-Learn about lambda functions, also known as anonymous functions or closures. These provide a concise way to create small, inline functions. See examples of using lambda functions in various scenarios.
+### Base Case
 
-## Examples
+A base case is a condition that determines when the recursion should stop. It provides the answer for the simplest, smallest subproblem that doesn't require further recursion.
 
-The 'examples' directory in this repository contains C++ code samples that demonstrate different aspects of using functions. These examples cover common use cases and can be used for learning and practice.
+### Example: Calculating Factorial
 
-## Contributing
+Here's an example of a recursive function to calculate the factorial of a number:
 
-Contributions are welcome! If you'd like to add more examples, improve explanations, or fix issues, please feel free to create a pull request. For major changes, please open an issue first to discuss what you would like to change.
+```cpp
+#include <iostream>
+
+unsigned long long factorial(int n) {
+    // Base case: factorial of 0 is 1
+    if (n == 0) {
+        return 1;
+    }
+    // Recursive case: factorial of n is n times factorial of (n-1)
+    return n * factorial(n - 1);
+}
+
+int main() {
+    int num;
+    std::cout << "Enter a non-negative integer: ";
+    std::cin >> num;
+    
+    if (num < 0) {
+        std::cout << "Factorial is not defined for negative numbers." << std::endl;
+    } else {
+        unsigned long long result = factorial(num);
+        std::cout << "Factorial of " << num << " is " << result << std::endl;
+    }
+
+    return 0;
+}
+```
+
+In this example, the `factorial` function calls itself recursively to calculate the factorial of a number. The base case (n == 0) ensures that the recursion stops when the input reaches 0.
+
+## Algorithm
+- **Algorithm: Factorial Calculation**
+
+Input: An integer 'n' for which you want to calculate the factorial.
+Output: The factorial of 'n'.
+
+1. Start with a function named 'factorial' that takes an integer 'n' as its argument.
+2. Inside the 'factorial' function:
+   a. Check the base case: If 'n' is 0 or 1, return 1 because the factorial of 0 and 1 is 1.
+   b. If 'n' is greater than 1, calculate the factorial recursively as follows:
+      - Multiply 'n' by the result of the 'factorial' function with argument 'n - 1'.
+      - Return this result.
+3. In the 'main' function:
+   a. Declare an integer 'num' to store the input number for which you want to calculate the factorial.
+   b. Ask the user to input the value of 'num'.
+   c. Call the 'factorial' function with 'num' as the argument to compute the factorial.
+   d. Display the result as the factorial of 'num'.
+
+- **Algorithm: Sum of Integers from 1 to n**
+
+Algorithm: Sum of Integers from 1 to n Using Recursive Function
+
+Input: A positive integer 'n'.
+Output: The sum of all integers from 1 to 'n'.
+
+1. Initialize a recursive function 'sumOfIntegers' that takes an integer 'n' as its argument.
+2. In the 'sumOfIntegers' function:
+   a. Check the base case: If 'n' is 1, return 1 because the sum of integers from 1 to 1 is 1.
+   b. If 'n' is greater than 1, calculate the sum recursively as follows:
+      - Return 'n' plus the result of the 'sumOfIntegers' function with argument 'n - 1'.
+3. In the 'main' function:
+   a. Declare an integer variable 'n' to store the input value for which you want to calculate the sum.
+   b. Ask the user to input the value of 'n'.
+   c. Call the 'sumOfIntegers' function with 'n' as the argument to compute the sum.
+   d. Display the result as the sum of integers from 1 to 'n'.
+
+- **Algorithm: Print String in Reverse Using Recursive Function**
+  
+Input: A string 'str' and the length of the string 'n'.
+Output: Print the characters of 'str' in reverse order.
+
+1. Initialize a recursive function 'printReverseString' that takes two arguments: 'str' and 'n'.
+2. In the 'printReverseString' function:
+   a. Check the base case: If 'n' is 0 (the string is empty), return.
+   b. Print the last character of 'str' (str[n-1]).
+   c. Call the 'printReverseString' function recursively with 'str' excluding the last character (str[0 to n-2]) and 'n-1' as arguments.
+3. In the 'main' function:
+   a. Declare a character array 'str' to store the input string.
+   b. Read the input string into 'str'.
+   c. Calculate the length of the input string and store it in 'n'.
+   d. Call the 'printReverseString' function with 'str' and 'n' as arguments to print the string in reverse order
+
+## **OUTPUT**
+
+  - **Algorithm: Factorial Calculation**
+
+![exp15_1](https://github.com/Purvansha022609/Recursion-/assets/139473344/051f0bbb-938b-4038-b85d-2d264020c2e8)
+
+- **Algorithm: Sum of Integers from 1 to n**
+
+![exp15_2](https://github.com/Purvansha022609/Recursion-/assets/139473344/7fd507b2-21ee-4a33-9b74-9d67673acfad)
+
+- **Algorithm: Print String in Reverse Using Recursive Function**
+
+![exp15_3](https://github.com/Purvansha022609/Recursion-/assets/139473344/67ff5fcf-01f6-413e-99b3-e822813bb2dc)
